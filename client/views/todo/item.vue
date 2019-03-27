@@ -1,28 +1,31 @@
 <template>
   <div :class="['todo-item', todo.completed ? 'completed' : '']">
     <input 
+      v-model="todo.completed"
       type="checkbox"
       class="toggle"
-      v-model="todo.completed"
     >
-    <label>{{todo.content}}</label>
-    <button class="destory" @click="deleteTodo"></button>
+    <label>{{ todo.content }}</label>
+    <button
+      class="destory"
+      @click="deleteTodo"
+    />
   </div>
 </template>
 
 <script>
 export default {
-  props: {
-    todo: {
-      type: Object,
-      required: true,
+    props: {
+        todo: {
+            type: Object,
+            required: true,
+        }
+    },
+    methods: {
+        deleteTodo() {
+            this.$emit('del', this.todo.id)
+        }
     }
-  },
-  methods: {
-    deleteTodo() {
-      this.$emit('del', this.todo.id)
-    }
-  }
 }
 </script>
 
@@ -65,10 +68,10 @@ export default {
   appearance: none;
   outline none
   &:after{
-    content url('../assets/images/round.svg')
+    content url('../../assets/images/round.svg')
   }
   &:checked:after{
-    content url('../assets/images/done.svg')
+    content url('../../assets/images/done.svg')
   }
 }
 .destory{
