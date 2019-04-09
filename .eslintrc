@@ -30,7 +30,7 @@
         "no-dupe-args": "error",
         "no-duplicate-case": "error",
         "no-duplicate-imports": "error",
-        "no-empty": "error"
+        "no-console": "off"
     },
     "env": {
         "browser": true,
